@@ -4,6 +4,17 @@ import Dogs from './Dogs.js';
 import Humans from './Humans.js';
 
 export default class Pets extends Component {
+  state = {
+    cat: '',
+    dog: '',
+    humans: '',
+    done: false
+  }
+
+  componentDidMount(){
+    //fetch calls here
+  }
+
   render(){
     return (
       <>
