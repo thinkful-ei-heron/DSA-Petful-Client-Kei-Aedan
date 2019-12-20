@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
-export default class Cat extends Component {
+class Dog extends Component {
   componentDidMount() {
-    const dog = this.props.dog;
   }
   render(){
     return (
@@ -11,3 +10,5 @@ export default class Cat extends Component {
     );
   }
 }
+
+export default Dog;

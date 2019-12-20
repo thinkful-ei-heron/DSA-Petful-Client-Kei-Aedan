@@ -1,27 +1,17 @@
 import React, { Component } from 'react';
-import Cats from './Cats.js';
-import Dogs from './Dogs.js';
-import Humans from './Humans.js';
+import Cat from './Cat';
+import Dog from './Dog';
+import Humans from './Humans';
 
-export default class Pets extends Component {
-  state = {
-    cat: '',
-    dog: '',
-    humans: '',
-    done: false
-  }
-
-  componentDidMount(){
-    //fetch calls here
-  }
-
+class Adopt extends Component {
+  
   render(){
     return (
       <>
-        <Cats></Cats>
-        <Dogs></Dogs>
-        <Humans></Humans>
+        <Cat></Cat>
       </>
     );
   }
 }
+
+export default Adopt;
