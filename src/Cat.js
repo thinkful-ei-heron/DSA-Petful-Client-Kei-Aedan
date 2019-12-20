@@ -34,7 +34,7 @@ class Cat extends Component {
           <p className='Detail-text'>Breed: {this.props.cat.breed}</p>
           <p className='Detail-text'>Story: {this.props.cat.story}</p>
         </div>
-        <button className='Adopt-button' type='button' onClick={this.handleClick}>Adopt</button>
+        <button className='Adopt-button' type='button' onClick={this.handleClick} disabled={!this.props.name}>Adopt</button>
       </>
     )
   }

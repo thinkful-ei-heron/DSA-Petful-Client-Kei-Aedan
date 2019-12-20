@@ -17,8 +17,7 @@ class Info extends React.Component {
                     <p>If you would like a chance to adopt a pet please enter your name below.</p>
                     <form className='name-form' onSubmit={(e) => {
                         e.preventDefault();
-                        this.props.setName(e.target.name.value);
-                        this.props.history.push('/adopt');
+                        this.props.setName(e.target.name.value, this.props.history);
                     }}>
                         <label htmlFor='name'>Your name:</label>
                         <input type='text' name='name'></input>

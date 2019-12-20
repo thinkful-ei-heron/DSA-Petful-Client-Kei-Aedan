@@ -9,6 +9,7 @@ class Adopt extends Component {
     humans: [],
     cat: '',
     dog: '',
+    name: this.props.name,
   }
   componentDidMount() {
     Promise.all([petfulApi.getHumans(), petfulApi.getCat(), petfulApi.getDog()])
@@ -39,8 +40,8 @@ class Adopt extends Component {
   render(){
     return (
       <>
-        <Cat cat={this.state.cat} setCat={this.setCat}></Cat>
-        <Dog dog={this.state.dog} setDog={this.setDog}></Dog>
+        <Cat name={this.state.name===this.state.humans[0]} cat={this.state.cat} setCat={this.setCat}></Cat>
+        <Dog name={this.state.name===this.state.humans[0]}dog={this.state.dog} setDog={this.setDog}></Dog>
         <Humans list={this.state.humans} />
       </>
     );

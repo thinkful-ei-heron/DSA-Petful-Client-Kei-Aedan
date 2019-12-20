@@ -10,13 +10,31 @@ const petfulApi = {
             return res.json();
         })
         .then(dataString => {
-            let dataArr = dataString.stringQu.split(', ');
-            return dataArr;
+            if (dataString.stringQu !== null){
+                let dataArr = dataString.stringQu.split(', ');
+                return dataArr;    
+            } else {
+                return [];
+            }
         })
     },
     deleteHuman() {
         return fetch(`${URL}/humans`, {
             method: 'DELETE'
+        })
+        .then(res => {
+            return;
+        })
+    },
+    enqueueHuman(name){
+        return fetch(`${URL}/humans`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name
+            })
         })
         .then(res => {
             return;
