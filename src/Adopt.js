@@ -13,7 +13,12 @@ class Adopt extends Component {
   componentDidMount() {
     Promise.all([petfulApi.getHumans(), petfulApi.getCat(), petfulApi.getDog()])
       .then(res => {
-        console.log(res);
+        if (res[1] === null){
+          res[1] = [];
+        }
+        if (res[2] === null){
+          res[2] = [];
+        }
         this.setState({humans: res[0], cat: res[1], dog: res[2]});
       })
   }
@@ -25,6 +30,9 @@ class Adopt extends Component {
   }
 
   setDog = (dog) => {
+    if (dog === null){
+      dog = [];
+    }
     this.setState({dog});
   }
 

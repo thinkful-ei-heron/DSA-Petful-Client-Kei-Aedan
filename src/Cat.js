@@ -47,16 +47,7 @@ class Cat extends Component {
     return (
       <div className='Pet'>
         <h3>Cat</h3>
-        {this.props.cat === [] ? this.renderNull() : this.renderDetails()}
-        {/* <div className='Pet-details'>
-          <img className='Pet-photo' src={this.props.cat.imageURL} alt='A cute cat next in line to be adopted.'></img>
-          <p className='Detail-text'>Name: {this.props.cat.name}</p>
-          <p className='Detail-text'>Gender: {this.props.cat.sex}</p>
-          <p className='Detail-text'>Age: {this.props.cat.age} years old</p>
-          <p className='Detail-text'>Breed: {this.props.cat.breed}</p>
-          <p className='Detail-text'>Story: {this.props.cat.story}</p>
-        </div> */}
-        <button className='Adopt-button' type='button' onClick={this.handleClick}>Adopt</button>
+        {this.props.cat.length === 0 ? this.renderNull() : this.renderDetails()}
       </div>
     );
   }

@@ -10,7 +10,6 @@ const petfulApi = {
             return res.json();
         })
         .then(dataString => {
-            console.log(dataString);
             let dataArr = dataString.stringQu.split(', ');
             return dataArr;
         })

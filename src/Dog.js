@@ -21,10 +21,10 @@ class Dog extends Component {
           })
       })
   }
-  render(){
+
+  renderDetails(){
     return (
-      <div className='Pet'>
-        <h3>Dog</h3>
+      <>
         <div className='Pet-details'>
           <img className='Pet-photo' src={this.props.dog.imageURL} alt='A cute dog next in line to be adopted.'></img>
           <p className='Detail-text'>Name: {this.props.dog.name}</p>
@@ -34,6 +34,19 @@ class Dog extends Component {
           <p className='Detail-text'>Story: {this.props.dog.story}</p>
         </div>
         <button className='Adopt-button' type='button' onClick={this.handleClick}>Adopt</button>
+      </>
+    )
+  }
+
+  renderNull(){
+    return <h3>No more dogs to be adopted!</h3>
+  }
+
+  render(){
+    return (
+      <div className='Pet'>
+        <h3>Dog</h3>
+        {this.props.dog.length === 0 ? this.renderNull() : this.renderDetails()}
       </div>
     );
   }
