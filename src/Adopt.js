@@ -54,8 +54,10 @@ class Adopt extends Component {
     this.timer();
     return (
       <>
-        <Cat name={this.state.name===this.state.humans[0]} cat={this.state.cat} setCat={this.setCat}></Cat>
-        <Dog name={this.state.name===this.state.humans[0]}dog={this.state.dog} setDog={this.setDog}></Dog>
+        <div className='all-pets'>
+          <Cat name={this.state.name===this.state.humans[0]} cat={this.state.cat} setCat={this.setCat}></Cat>
+          <Dog name={this.state.name===this.state.humans[0]}dog={this.state.dog} setDog={this.setDog}></Dog>
+        </div>
         <Humans list={this.state.humans} />
       </>
     );

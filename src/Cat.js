@@ -25,7 +25,7 @@ class Cat extends Component {
 
   renderDetails(){
     return (
-      <>
+      <div className='pet-container'>
         <div className='Pet-details'>
           <img className='Pet-photo' src={this.props.cat.imageURL} alt='A cute cat next in line to be adopted.'></img>
           <p className='Detail-text'>Name: {this.props.cat.name}</p>
@@ -35,7 +35,7 @@ class Cat extends Component {
           <p className='Detail-text'>Story: {this.props.cat.story}</p>
         </div>
         <button className='Adopt-button' type='button' onClick={this.handleClick} disabled={!this.props.name}>Adopt</button>
-      </>
+      </div>
     )
   }
 
