@@ -9,6 +9,7 @@ class Adopt extends Component {
     return (
       <>
         <Cat></Cat>
+        <Humans list={this.state.humans} />
       </>
     );
   }
