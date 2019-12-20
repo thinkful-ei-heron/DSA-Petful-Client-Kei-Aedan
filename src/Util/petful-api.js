@@ -10,6 +10,7 @@ const petfulApi = {
             return res.json();
         })
         .then(dataString => {
+            console.log(dataString);
             let dataArr = dataString.stringQu.split(', ');
             return dataArr;
         })
@@ -21,7 +22,40 @@ const petfulApi = {
         .then(res => {
             return;
         })
+    },
+    getCat() {
+        return fetch(`${URL}/cats`, {
+            method: 'GET'
+        })
+        .then(res => {
+            return res.json();
+        })
+    },
+    deleteCat() {
+        return fetch(`${URL}/dogs`, {
+            method: 'DELETE'
+        })
+        .then(res => {
+            return;
+        })
+    },
+    getDog() {
+        return fetch(`${URL}/dogs`, {
+            method: 'GET'
+        })
+        .then(res => {
+            return res.json();
+        })
+    },
+    deleteDog() {
+        return fetch(`${URL}/dogs`, {
+            method: 'DELETE'
+        })
+        .then(res => {
+            return;
+        })
     }
+
 }
 
 
