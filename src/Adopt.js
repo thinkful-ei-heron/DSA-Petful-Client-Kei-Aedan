@@ -23,6 +23,19 @@ class Adopt extends Component {
         this.setState({humans: res[0], cat: res[1], dog: res[2]});
       })
   }
+
+  timer = () => {
+    setTimeout(() => {
+      petfulApi.getHumans()
+    .then(resp => {
+      this.setState({
+        humans: resp
+      })
+    })
+    }, 5000);
+  }
+
+
   setCat = (cat) => {
     if (cat === null){
       cat = [];
@@ -38,6 +51,7 @@ class Adopt extends Component {
   }
 
   render(){
+    this.timer();
     return (
       <>
         <Cat name={this.state.name===this.state.humans[0]} cat={this.state.cat} setCat={this.setCat}></Cat>
