@@ -6,21 +6,33 @@ import petfulApi from './Util/petful-api';
 
 class Adopt extends Component {
   state = {
-    humans: ''
+    humans: [],
+    cat: '',
+    dog: '',
   }
-
   componentDidMount() {
-    Promise.all([petfulApi.getHumans(), ])
+    Promise.all([petfulApi.getHumans(), petfulApi.getCat(), petfulApi.getDog()])
       .then(res => {
-        this.setState({humans: res[0]});
+        console.log(res);
+        this.setState({humans: res[0], cat: res[1], dog: res[2]});
       })
   }
-  
-  
+  setCat = (cat) => {
+    if (cat === null){
+      cat = [];
+    }
+    this.setState({cat});
+  }
+
+  setDog = (dog) => {
+    this.setState({dog});
+  }
+
   render(){
     return (
       <>
-        <Cat></Cat>
+        <Cat cat={this.state.cat} setCat={this.setCat}></Cat>
+        <Dog dog={this.state.dog} setDog={this.setDog}></Dog>
         <Humans list={this.state.humans} />
       </>
     );
