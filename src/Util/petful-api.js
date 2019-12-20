@@ -1,5 +1,5 @@
 import config from '../config';
-const URL = config.URL;
+const URL = config.REACT_APP_URL;
 
 const petfulApi = {
     getHumans() {
