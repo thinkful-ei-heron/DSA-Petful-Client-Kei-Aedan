@@ -6,7 +6,7 @@ import petfulApi from './Util/petful-api';
 
 class Adopt extends Component {
   state = {
-    humans: ''
+    humans: []
   }
 
   componentDidMount() {
