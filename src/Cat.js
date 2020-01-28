@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
+import REACT_APP_URL from './config';
 
 class Cat extends Component {
   handleClick = event => {
     event.preventDefault();
-    fetch('http://localhost:8080/api/cats', {
+    fetch(REACT_APP_URL, {
       method: 'DELETE'
     })
       .then(res => {
-        fetch('http://localhost:8080/api/cats', {
+        fetch(REACT_APP_URL, {
           method: 'GET'
         })
           .then(res => {
-            if(!res.ok) {
+            if (!res.ok) {
               return res.json().then(e => Promise.reject(e));
             }
-            return res.json();    
+            return res.json();
           })
           .then(cat => {
             console.log('inside cat adopt button', cat);
@@ -23,7 +24,7 @@ class Cat extends Component {
       })
   }
 
-  renderDetails(){
+  renderDetails() {
     return (
       <div className='pet-container'>
         <div className='Pet-details'>
@@ -39,11 +40,11 @@ class Cat extends Component {
     )
   }
 
-  renderNull(){
+  renderNull() {
     return <h3>No more cats to be adopted!</h3>
   }
 
-  render(){
+  render() {
     return (
       <div className='Pet'>
         <h3>Cat</h3>

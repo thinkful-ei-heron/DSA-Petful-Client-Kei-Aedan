@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
+import REACT_APP_URL from './config';
 
 class Dog extends Component {
   handleClick = event => {
     event.preventDefault();
-    fetch('http://localhost:8080/api/dogs', {
+    fetch(REACT_APP_URL, {
       method: 'DELETE'
     })
       .then(res => {
-        fetch('http://localhost:8080/api/dogs', {
+        fetch(REACT_APP_URL, {
           method: 'GET'
         })
           .then(res => {
-            if(!res.ok) {
+            if (!res.ok) {
               return res.json().then(e => Promise.reject(e));
             }
-            return res.json();    
+            return res.json();
           })
           .then(dog => {
             return this.props.setDog(dog);
@@ -22,7 +23,7 @@ class Dog extends Component {
       })
   }
 
-  renderDetails(){
+  renderDetails() {
     return (
       <div className='pet-container'>
         <div className='Pet-details'>
@@ -38,11 +39,11 @@ class Dog extends Component {
     )
   }
 
-  renderNull(){
+  renderNull() {
     return <h3>No more dogs to be adopted!</h3>
   }
 
-  render(){
+  render() {
     return (
       <div className='Pet'>
         <h3>Dog</h3>
