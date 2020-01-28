@@ -4,11 +4,11 @@ import REACT_APP_URL from './config';
 class Dog extends Component {
   handleClick = event => {
     event.preventDefault();
-    fetch(REACT_APP_URL, {
+    fetch(`${REACT_APP_URL}/dogs`, {
       method: 'DELETE'
     })
       .then(res => {
-        fetch(REACT_APP_URL, {
+        fetch(`${REACT_APP_URL}/dogs`, {
           method: 'GET'
         })
           .then(res => {
