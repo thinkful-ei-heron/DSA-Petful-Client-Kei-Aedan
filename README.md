@@ -1,8 +1,8 @@
 # Keisuke Isobe and Aedan Warfield's Petful App
 
-Live app: 
+Live app: https://petful-aedan-kei.now.sh/
 
-Server GitHub: 
+Server GitHub: https://github.com/thinkful-ei-heron/DSA-Petful-Client-Kei-Aedan
 
 ---------------
 
@@ -11,6 +11,11 @@ Coding Pair: Keisuke Isobe/Aedan Warfield
 ---------------
 
 ## Summary
+
+Welcome to Petful. Petful is a (virtual) adoption center where you can entire a virtual queue
+and simulate the wonderful experience of waiting in line at the dog pound or wherever else you 
+pick up adopted animals. You'll only have five seconds to decide if you're going to change animals'
+life forever before you're kicked back to the end of the line, so think fast!
 
 
 ### The adoption process
@@ -24,4 +29,21 @@ Coding Pair: Keisuke Isobe/Aedan Warfield
 
 ## Technology Used
 
-Javascript, React, CSS, HTML
+<b>Front-end:<b>
+<ul>
+  <li>Javascript</li>
+  <li>React</li>
+  <li>CSS</li>
+  <li>HTML5</li>
+</ul>
+
+----------------------------------
+
+## Notes
+
+This client continually updates in a set interval as the queue rotates. The client does not simulate other 
+user behavior, i.e., users in the queue other than yourself will not adopt any pets. 
+
+
+
+
