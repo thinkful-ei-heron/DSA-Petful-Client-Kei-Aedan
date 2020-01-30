@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 export default class Humans extends Component {
   render() {
-    let list = this.props.list.map(human => {
-      return (<li key={human}>{human}</li>)
+    const humans = this.props.list.map(node => node.value);
+    let list = humans.map(human => human.name);  
+    list = list.map((human, i) => {
+      return (<li key={i}>{human}</li>)
     });
-
     return (
       <div>
         <h2>Queue of people trying to adopt:</h2>

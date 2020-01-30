@@ -10,6 +10,8 @@ class Adopt extends Component {
     cat: '',
     dog: '',
     name: this.props.name,
+    id: '',
+    adoptedArray: []
   }
   componentDidMount() {
     petfulApi.getCat()
@@ -29,7 +31,11 @@ class Adopt extends Component {
     this.timer = setInterval( () => {
       petfulApi.getHumans()
         .then(res => {
-          this.setState({humans: res});
+          this.setState({
+            humans: res,
+            name: res[0].value.name,
+            id: res[0].value.id
+          });
         })
       },
       2500)  
@@ -54,13 +60,21 @@ class Adopt extends Component {
     this.setState({dog});
   }
 
+  setAdopted = (adopted) => {
+    const adoptedArray = this.state.adoptedArray;
+    adoptedArray.push(adopted);
+    this.setState({adoptedArray})
+  }
+
   render(){
+    let adopted = this.state.adoptedArray.map(pet => pet.name);
     return (
       <>
         <div className='all-pets'>
-          <Cat name={this.state.name===this.state.humans[0]} cat={this.state.cat} setCat={this.setCat}></Cat>
-          <Dog name={this.state.name===this.state.humans[0]}dog={this.state.dog} setDog={this.setDog}></Dog>
+          <Cat userId={this.props.userId} queueId={this.state.id} cat={this.state.cat} setCat={this.setCat} setAdopted={this.setAdopted}></Cat>
+          <Dog userId={this.props.userId} queueId={this.state.id} dog={this.state.dog} setDog={this.setDog} setAdopted={this.setAdopted}></Dog>
         </div>
+        {adopted.length > 0 && <p>You have adopted {adopted.join(', ')}</p>}
         <Humans list={this.state.humans} />
       </>
     );

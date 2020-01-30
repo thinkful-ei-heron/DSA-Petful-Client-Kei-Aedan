@@ -9,13 +9,8 @@ const petfulApi = {
         .then(res => {
             return res.json();
         })
-        .then(dataString => {
-            if (dataString.stringQu !== null){
-                let dataArr = dataString.stringQu.split(', ');
-                return dataArr;    
-            } else {
-                return [];
-            }
+        .then(humanQu => {
+            return humanQu;
         })
     },
     deleteHuman() {
@@ -26,14 +21,15 @@ const petfulApi = {
             return;
         })
     },
-    enqueueHuman(name){
+    enqueueHuman(name, id){
         return fetch(`${URL}/humans`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify({
-                name: name
+                name: name,
+                id: id
             })
         })
         .then(res => {

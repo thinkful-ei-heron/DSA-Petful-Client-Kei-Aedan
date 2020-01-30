@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
+import config from './config';
+const URL = config.REACT_APP_URL;
 
 class Dog extends Component {
+
   handleClick = event => {
     event.preventDefault();
-    fetch('http://localhost:8080/api/dogs', {
+    const dog = this.props.dog;
+    this.props.setAdopted(dog)
+    fetch(`${URL}/dogs`, {
       method: 'DELETE'
     })
       .then(res => {
-        fetch('http://localhost:8080/api/dogs', {
+        fetch(`${URL}/dogs`, {
           method: 'GET'
         })
           .then(res => {
@@ -16,9 +21,9 @@ class Dog extends Component {
             }
             return res.json();    
           })
-          .then(dog => {
-            return this.props.setDog(dog);
-          })
+            .then(dog => {
+              return this.props.setDog(dog);
+            })
       })
   }
 
@@ -33,7 +38,7 @@ class Dog extends Component {
           <p className='Detail-text'>Breed: {this.props.dog.breed}</p>
           <p className='Detail-text'>Story: {this.props.dog.story}</p>
         </div>
-        {this.props.name && <button className='Adopt-button' type='button' onClick={this.handleClick} disabled={!this.props.name}>Adopt</button>}
+        {this.props.queueId === this.props.userId && <button className='Adopt-button' type='button' onClick={this.handleClick}>Adopt</button>}
       </div>
     )
   }
