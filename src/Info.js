@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import adoption from './img/adoption.jpg';
 
 class Info extends React.Component {
     render() {
@@ -11,6 +12,8 @@ class Info extends React.Component {
                     <p>Every 30 seconds the person in the front of the line change so make sure to pay attention.</p>
                     <p>When it is your turn the option to adopt either a dog, a cat or both pets will present itself. You still will be on the timer so make it count.</p>
                     <p>Once you submit you'll be removed from the front of the line and the pets will be shipped to you.</p>
+                    <img src={adoption} alt=""></img>
+                    <p>Don't you want to adopt a pet?</p>
                 </section>
                 <section className='getting-in-line'>
                     <h2>Getting in line</h2>

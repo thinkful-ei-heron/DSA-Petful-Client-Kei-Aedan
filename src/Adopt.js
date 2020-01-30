@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Cat from './Cat';
 import Dog from './Dog';
 import Humans from './Humans';
-import petfulApi from './Util/petful-api';
+import petfulApi from './util/petful-api';
 
 class Adopt extends Component {
   state = {
@@ -12,30 +12,27 @@ class Adopt extends Component {
     name: this.props.name,
   }
   componentDidMount() {
-    Promise.all([petfulApi.getHumans(), petfulApi.getCat(), petfulApi.getDog()])
-      .then(res => {
-        if (res[1] === null){
-          res[1] = [];
-        }
-        if (res[2] === null){
-          res[2] = [];
-        }
-        this.setState({humans: res[0], cat: res[1], dog: res[2]});
-      })
+    this.timer = setInterval( () => {
+      Promise.all([petfulApi.getHumans(), petfulApi.getCat(), petfulApi.getDog()])
+        .then(res => {
+          console.log(res[0]);
+          if (res[1] === null){
+            res[1] = [];
+          }
+          if (res[2] === null){
+            res[2] = [];
+          }
+          this.setState({humans: res[0], cat: res[1], dog: res[2]});
+        })
+      },
+      1000)
   }
 
-  timer = () => {
-    setTimeout(() => {
-      petfulApi.getHumans()
-    .then(resp => {
-      this.setState({
-        humans: resp
-      })
-    })
-    }, 5000);
+  componentWillUnmount() {
+    clearInterval(this.timer) 
+    this.timer = null; 
   }
-
-
+  
   setCat = (cat) => {
     if (cat === null){
       cat = [];
@@ -51,7 +48,6 @@ class Adopt extends Component {
   }
 
   render(){
-    this.timer();
     return (
       <>
         <div className='all-pets'>

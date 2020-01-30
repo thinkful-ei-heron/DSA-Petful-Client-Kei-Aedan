@@ -17,7 +17,6 @@ class Cat extends Component {
             return res.json();    
           })
           .then(cat => {
-            console.log('inside cat adopt button', cat);
             return this.props.setCat(cat);
           })
       })

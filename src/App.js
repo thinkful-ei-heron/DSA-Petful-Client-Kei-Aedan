@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { Route, Switch } from 'react-router-dom'
 import Adopt from './Adopt.js';
-import Info from './Info';
+import Info from './info';
 import './App.css';
-import petfulApi from './Util/petful-api.js';
+import petfulApi from './util/petful-api.js';
 
 class App extends Component {
   state={
