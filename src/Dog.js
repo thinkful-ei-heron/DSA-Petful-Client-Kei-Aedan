@@ -33,7 +33,7 @@ class Dog extends Component {
           <p className='Detail-text'>Breed: {this.props.dog.breed}</p>
           <p className='Detail-text'>Story: {this.props.dog.story}</p>
         </div>
-        <button className='Adopt-button' type='button' onClick={this.handleClick} disabled={!this.props.name}>Adopt</button>
+        {this.props.name && <button className='Adopt-button' type='button' onClick={this.handleClick} disabled={!this.props.name}>Adopt</button>}
       </div>
     )
   }

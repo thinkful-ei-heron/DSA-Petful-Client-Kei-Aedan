@@ -12,20 +12,27 @@ class Adopt extends Component {
     name: this.props.name,
   }
   componentDidMount() {
+    petfulApi.getCat()
+      .then(res => {
+        if (res !== null){
+          this.setState({cat: res})
+        }
+      })
+        .then( () => {
+          petfulApi.getDog()
+            .then(res => {
+              if (res !== null){
+                this.setState({dog: res})
+              }
+            })
+        })
     this.timer = setInterval( () => {
-      Promise.all([petfulApi.getHumans(), petfulApi.getCat(), petfulApi.getDog()])
+      petfulApi.getHumans()
         .then(res => {
-          console.log(res[0]);
-          if (res[1] === null){
-            res[1] = [];
-          }
-          if (res[2] === null){
-            res[2] = [];
-          }
-          this.setState({humans: res[0], cat: res[1], dog: res[2]});
+          this.setState({humans: res});
         })
       },
-      1000)
+      2500)  
   }
 
   componentWillUnmount() {
